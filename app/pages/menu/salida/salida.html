@@ -1,0 +1,39 @@
+<md-card>
+  <md-card-content layout='column'>
+
+    <md-content layout="row" layout-align="space-between center" layout-padding flex>
+      <div layout='column' flex>
+        <h3 class="md-subhead">Registrar salida</h3>
+        <p class="md-subheader">Para registrar la salida debes seleccionar el numero de tarjeta de la persona que se le asignó en la entrada, <!--o con el numero de la cedula de la persona--> opcionalmente puedes escribir una observación</p>
+      </div>
+      <div layout='column' flex>
+        <!--<md-checkbox ng-model="chCedula" aria-label="Checkbox 1">
+          ¿Cedula?
+        </md-checkbox>-->
+        <form name="sf" ng-submit="valiexiste()">
+          <!-- TARJETA -->
+          <md-input-container class="md-block" >
+            <md-autocomplete flex required='true' md-input-name="numero_tarjeta" md-search-text="ntaSearch" md-items="item in qNta(ntaSearch)" md-selected-item='item.nTarjeta' md-item-text="item.nTarjeta" md-floating-label="Digite el número de la tarjeta">
+              <md-item-template>
+                <span md-highlight-text="ntaSearch">{{item.nTarjeta}}</span>
+              </md-item-template>
+              <div ng-messages="sf.numero_tarjeta.$error" ng-if='sf.numero_tarjeta.$touched'>
+                <div ng-message="required">Debes seleccionar el numero de tarjeta para registrar la salida.</div>
+              </div>
+            </md-autocomplete>
+          </md-input-container>
+          <!-- OBSERVACIONES -->
+          <md-input-container class="md-block">
+            <label>Observacioes</label>
+            <textarea ng-model='ob' name="ob"></textarea>
+          </md-input-container>
+          <!-- -->
+          <md-input-container class="md-block">
+            <md-button class="md-primary md-flat" type="submit">Registrar salida</md-button>
+          </md-input-container>
+
+        </form>
+      </div>
+    </md-content>
+  </md-card-content>
+</md-card>

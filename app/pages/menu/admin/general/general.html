@@ -1,0 +1,49 @@
+<div layout='row'>
+
+  <div layout='column' flex>
+    <md-toolbar >
+      <div class="md-toolbar-tools">
+        <h3>Tarjetas</h3>
+        <span flex></span>
+        <md-input-container md-no-float>
+          <input ng-model="ntaF.id_nta" class='btnTool' aria-label='bas'>
+        </md-input-container>
+      </div>
+    </md-toolbar>
+    <!-- -->
+    <md-content flex style="max-height:390px;">
+      <md-list >
+        <md-list-item class="secondary-button-padding" flex ng-repeat="item in nta | filter : ntaF" >
+          <p>Tarjeta N°{{item.nTarjeta}}</p>
+          <md-button class="md-primary md-secondary md-icon-button" ng-disabled='!item.ocupada'  ng-click="AbrInfo(7,item.id_nta)">
+            <i class="material-icons" ng-class="{op_1:item.ocupada, op_0:!item.ocupada}" >library_books</i>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+  <!-- -->
+  <div layout='column' flex>
+    <md-toolbar >
+      <div class="md-toolbar-tools">
+        <h3>Parqueaderos</h3>
+        <span flex></span>
+        <md-input-container md-no-float>
+          <input ng-model="parqF.id_parq" class='btnTool' aria-label='kads'>
+        </md-input-container>
+      </div>
+    </md-toolbar>
+    <!-- -->
+    <md-content flex style="max-height:390px;">
+      <md-list >
+        <md-list-item class="secondary-button-padding" flex ng-repeat="item in parq | filter : parqF">
+          <p>Parqueadero n°{{item.id_parq}}</p>
+          <md-button class="md-primary md-secondary md-icon-button"   ng-click="AbrInfo(8,item.id_parq)">
+            <i class="material-icons" ng-class="{op_1:item.ocupada, op_0:!item.ocupada}">library_books</i>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-content>
+
+  </div>
+</div>

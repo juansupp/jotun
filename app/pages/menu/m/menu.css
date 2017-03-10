@@ -1,0 +1,181 @@
+  @keyframes foo {
+    from {
+      transform: translateY(-100%)
+    }
+    to {
+      transform: translateY(0)
+    }
+  }
+  .fadein {
+    overflow: hidden;
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+  .fadein:before, .fadein:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 3;
+  }
+  .fadein:after {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .1)0%, transparent 100%);
+  }
+  .fadein:before {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, .1)0%, transparent 100%);
+  }
+  .fadein.ng-hide-remove, .fadeout.ng-hide-add.ng-hide-add-active {
+    max-height: 0;
+    transition: max-height 1s ease-out;
+  }
+  .fadeout.ng-hide-add, .fadein.ng-hide-remove.ng-hide-remove-active {
+    max-height: 500px;
+    transition: max-height 1s ease-in;
+  }
+  ////END ANIMATIONS
+  md-sidenav.md-locked-open {
+    width: 250px!important;
+    min-width: 250px!important;
+    max-width: 250px!important;
+  }
+  .md-select-menu-container {
+    z-index: 9999;
+  }
+  .title {
+    font-size: 2rem !important;
+    font-weight: 100 !important;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.12);
+    font-family: 'Kaushan Script', cursive;
+  }
+  .iconMenu {
+    font-size: 20px!important;
+    margin-right: 15px!important;
+  }
+  header div span.fs-title {
+    font-size: 2rem!important;
+    font-weight: 300!important;
+    line-height: 28px!important;
+  }
+  .sider-content {
+    background-color: #4a4a4a!important;
+  }
+  .toogle-menu-nix {
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.12);
+    z-index 10!important;
+    font-size: 20px;
+    letter-spacing: .005em;
+    font-weight: 400;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+    height: 64px;
+    max-height: 64px;
+    padding: 0 16px;
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12)!important;
+    background-image: url('../../../assets/img/fondo.png');
+  }
+  .sidebar-left-logo {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-right: 15px;
+  }
+  .side-menu-link {
+    text-align: left!important;
+    width: 100%!important;
+    height: 48px!important;
+    padding: 0px 16px!important;
+    margin: 0px!important;
+    text-transform: none;
+    border-radius: 0px !important;
+    position: relative;
+    white-space: normal;
+    line-height: 48px!important;
+    z-index: 2;
+    box-shadow: none!important;
+    text-transform: none!important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12)!important;
+    color : white!important;
+  }
+  .side-menu-icon[md-font-icon] {
+    height: 100%;
+    line-height: inherit;
+    font-size: 1.5rem;
+  }
+  .side-menu-link.sub {
+    padding-left: 40px!important;
+    border-bottom: none!important;
+
+  }
+  .text_filter, .number_filter, .select_filter {
+    border: none;
+    transition: all 0.3s cubic-bezier(.64, .09, .08, 1);
+    background-position: -200px 0;
+    background-repeat: no-repeat;
+    color: darken(#ddd, 20%);
+    width 100% font-size: 0.90rem
+  }
+  #DataTables_Table_0_filter.dataTables_filter {
+    display: none;
+  }
+  tfoot {
+    display: table-header-group;
+  }
+  md-divider {
+    margin: 1% 0% !important;
+  }
+  .comp {
+    padding-top: 5%;
+  }
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  .ToolUp {
+    background-color: rgb(3, 169, 244)!important;
+    color: white!important;
+    background-image: url('../../../assets/img/fondo.png');
+  }
+  .iconA {
+    cursor: pointer;
+    margin-left: 2%;
+    font-size: 20px!important;
+  }
+  /*.btnTool button {
+    margin-right: 7px!important;
+  }*/
+  .color-primary {
+    color: rgb(3, 169, 244)!important;
+  }
+  ul {
+    margin: 0px;
+    padding: 0px;
+  }
+  .mort.ng-scope {
+    height: 100%;
+  }
+
+  .contenido {
+      overflow-x:hidden;
+      background-color: rgba(154, 154, 154, 0.09);
+  }
+
+
+.md-primary {
+  background-color: color: rgb(3, 169, 244);
+}

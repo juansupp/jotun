@@ -1,0 +1,28 @@
+<div layout="row" layout-wrap>
+  <div flex>
+    <md-card >
+      <md-card-content >
+        <md-tabs md-dynamic-height md-border-bottom md-selected="currentTab">
+          <!-- GENERAL -->
+          <md-tab label="General" ui-sref="m.a.general" ui-sref-opts="{reload: true}"  >
+             <md-content class="md-padding"     style="overflow: hidden">
+               <div ui-view="general"></div>
+             </md-content>
+          </md-tab>
+          <!-- USUARIO -->
+          <md-tab label="Usuarios" ui-sref="m.a.usuario"  ui-sref-opts="{reload: true}" ng-if="validando()">
+            <md-content class="md-padding"     style="overflow: hidden">
+              <div ui-view="usuario"></div>
+            </md-content>
+          </md-tab>
+          <!-- Dispositivos -->
+          <md-tab label="Dispositivos" ui-sref="m.a.dispositivo"  ui-sref-opts="{reload: true}" ng-if="validando()">
+            <md-content class="md-padding"     style="overflow: hidden">
+              <div ui-view="dispositivo"></div>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

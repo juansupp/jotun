@@ -1,0 +1,42 @@
+<!-- -->
+<md-card>
+  <md-card-content layout='column'>
+    <h3 class="md-subhead">Exportación a excel</h3>
+    <p class="md-subheader">Seleeciona un filtro y un rango de fechas .</p>
+
+<br>
+  <div layout='row'>
+    <md-input-container flex>
+      <label>Filtros</label>
+      <md-select ng-model="CtIngre">
+        <md-option  value="hora_s is  null" >
+          personas adentro
+        </md-option>
+        <md-option  value="id_parq is  not  null" >
+          personas con  vehiculos
+        </md-option>
+        <md-option  value="serial is  not  null">
+          personas con  dispositivos
+        </md-option>
+        <md-option  value="1 =1 " >
+          historial total
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <br>
+  <div layout='row'>
+    <div flex layout='column' align='center'>
+      <md-datepicker ng-model="Fini" md-placeholder='Fecha inicial'  ></md-datepicker>
+    </div>
+    <!-- -->
+    <div flex layout='column' align='center'>
+      <md-datepicker ng-model="Ffin" md-placeholder='Fecha final' ></md-datepicker>
+    </div>
+  </div>
+
+
+  <md-button type="button" class='md-primary' ng-click="miexcel()" flex>Exportar</md-button>
+
+  </md-card-content>
+</md-card>

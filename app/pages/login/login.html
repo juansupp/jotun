@@ -1,0 +1,32 @@
+<br>
+<br>
+<br>
+<div layout='row' layout-align="center center ">
+  <div layout='column'  flex='30'>
+    <div flex='' align='center'>
+      <img ng-src="assets/img/logopdc.png" alt="" />
+    </div>
+    <br>
+    <div flex=''>
+      <form name='loginf' ng-submit="log()">
+        <md-input-container class="md-block">
+          <label>Usuario</label>
+          <input required name="nick" ng-model="user.nick">
+          <div ng-messages="loginf.nick.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Contraseña</label>
+          <input type='password' required name="pass" ng-model="user.pass">
+          <div ng-messages="loginf.pass.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <md-button type='submit' class="md-primary">Ingresar</md-button>
+        </md-input-container>
+      </form>
+    </div>
+  </div>
+</div>

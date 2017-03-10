@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jotun">
+
+<head>
+  <title>Jotun</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <!-- build:css assets/css/app.css -->
+  <!-- bower:css -->
+  <link rel='stylesheet' href='../bower_components/angular-material/angular-material.css'/>
+  <link rel='stylesheet' href='../bower_components/datatables/media/css/jquery.dataTables.css'/>
+  <!-- endinject -->
+  <!-- simple:css -->
+  <link rel='stylesheet' href='pages/app.css'/>
+  <link rel='stylesheet' href='pages/login/login.css'/>
+  <link rel='stylesheet' href='pages/menu/entrada/entrada.css'/>
+  <link rel='stylesheet' href='pages/menu/excel/excel.css'/>
+  <link rel='stylesheet' href='pages/menu/historial/historial.css'/>
+  <link rel='stylesheet' href='pages/menu/m/menu.css'/>
+  <link rel='stylesheet' href='pages/menu/salida/salida.css'/>
+  <link rel='stylesheet' href='pages/menu/admin/a/a.css'/>
+  <link rel='stylesheet' href='pages/menu/admin/dispositivo/dispositivo.css'/>
+  <link rel='stylesheet' href='pages/menu/admin/general/general.css'/>
+  <link rel='stylesheet' href='pages/menu/admin/usuario/usuario.css'/>
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+
+<body ng-controller="AppCtrl">
+
+  <md-progress-linear class='load' ng-show="load" md-mode="indeterminate"></md-progress-linear>
+  <div class='mort' ui-view=''></div>
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src='../bower_components/jquery/dist/jquery.js'></script>
+  <script src='../bower_components/angular/angular.js'></script>
+  <script src='../bower_components/angular-animate/angular-animate.js'></script>
+  <script src='../bower_components/angular-aria/angular-aria.js'></script>
+  <script src='../bower_components/angular-messages/angular-messages.js'></script>
+  <script src='../bower_components/angular-ui-router/release/angular-ui-router.js'></script>
+  <script src='../bower_components/material-design-icons/index.js'></script>
+  <script src='../bower_components/moment/moment.js'></script>
+  <script src='../bower_components/moment/locale/es.js'></script>
+  <script src='../bower_components/angular-material/angular-material.js'></script>
+  <script src='../bower_components/datatables/media/js/jquery.dataTables.js'></script>
+  <script src='../bower_components/datatables/media/js/datatables.columnFilter.js'></script>
+  <script src='../bower_components/angular-datatables/dist/angular-datatables.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js'></script>
+  <script src='../bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js'></script>
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <!-- build:app scripts/app.js -->
+  <!-- simple:js -->
+  <script src='pages/app.js'></script>
+  <script src='pages/app.controller.js'></script>
+  <script src='pages/dialog/dialog.controller.js'></script>
+  <script src='pages/login/login.controller.js'></script>
+  <script src='pages/login/login.js'></script>
+  <script src='pages/menu/entrada/entrada.controller.js'></script>
+  <script src='pages/menu/entrada/entrada.js'></script>
+  <script src='pages/menu/excel/excel.controller.js'></script>
+  <script src='pages/menu/excel/excel.js'></script>
+  <script src='pages/menu/historial/historial.controller.js'></script>
+  <script src='pages/menu/historial/historial.js'></script>
+  <script src='pages/menu/m/menu.controller.js'></script>
+  <script src='pages/menu/m/menu.js'></script>
+  <script src='pages/menu/salida/salida.controller.js'></script>
+  <script src='pages/menu/salida/salida.js'></script>
+  <script src='pages/menu/admin/a/a.controller.js'></script>
+  <script src='pages/menu/admin/a/a.js'></script>
+  <script src='pages/menu/admin/dispositivo/dispositivo.controller.js'></script>
+  <script src='pages/menu/admin/dispositivo/dispositivo.js'></script>
+  <script src='pages/menu/admin/general/general.controller.js'></script>
+  <script src='pages/menu/admin/general/general.js'></script>
+  <script src='pages/menu/admin/usuario/usuario.controller.js'></script>
+  <script src='pages/menu/admin/usuario/usuario.js'></script>
+  <script src='services/bifrost.service.js'></script>
+  <script src='services/global.service.js'></script>
+  <script src='services/hummer.service.js'></script>
+  <script src='services/nube.service.js'></script>
+  <script src='services/combo.service.js'></script>
+  <!-- endinject -->
+  <!-- endbuild -->
+</body>
+
+</html>

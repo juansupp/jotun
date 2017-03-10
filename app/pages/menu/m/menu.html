@@ -1,0 +1,55 @@
+<div layout="row" class='mort' flex>
+  <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" style="width: 270px">
+    <!--<img src="assets/images/nix23.svg" alt="" class="" />-->
+    <md-toolbar class="toogle-menu-nix" layout-align="start center" style="color: white;">
+      <h3 flex="" class="sidebar-left-title title ng-binding">Pedro domecq</h3>
+    </md-toolbar>
+    <md-content layout="column" flex class="sider-content " style="color: rgb(5, 134, 193)!important;">
+      <ul>
+        <li ng-repeat="head in menuHeads">
+          <a ng-if="head.url" ui-sref="{{head.url}}" ng-show='head.show'>
+            <md-button class="side-menu-link " ng-click="head.sh = !head.sh">
+              <i class="iconMenu material-icons">{{head.icon}}</i>
+              {{head.title}}
+            </md-button>
+          </a>
+          <md-button ng-if="!head.url" class="md-raised md-primary side-menu-link " ng-click="head.sh = !head.sh" style="color: white!important;">
+            <i class="iconMenu material-icons">{{head.icon}}</i>
+            {{head.title}}
+          </md-button>
+          <ul class="fadein" ng-show="head.sh === true">
+            <li ng-repeat="item in head.menuItems">
+              <a ui-sref="{{item.url}}">
+                <md-button class="md-raised md-primary side-menu-link sub" style="color: white!important;">
+                  {{item.title}}
+                </md-button>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </md-content>
+  </md-sidenav>
+  <div layout="column" flex id="content">
+    <md-toolbar layout="row" class="ToolUp md-whiteframe-z2">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button color-accent" aria-label="More" ng-click="toggleLeft()" hide-gt-md>
+          <i class="material-icons">menu</i>
+        </md-button>
+        <h2 hide-sm>
+          <span>{{tit}}</span>
+        </h2>
+        <span flex></span>
+        <div class="btnTool">
+          <md-button class="md-icon-button color-accent" aria-label="More" ng-click="closeSession()">
+            <i class="material-icons" >power_settings_new</i>
+          </md-button>
+
+        </div>
+      </div>
+    </md-toolbar>
+    <md-content class='md-whiteframe-2dp contenido' layout="column" flex layout-padding>
+      <div ui-view=""></div>
+    </md-content>
+  </div>
+</div>

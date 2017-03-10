@@ -1,0 +1,18 @@
+{
+  "name": "jotun",
+  "version": "0.0.0",
+  "description": "jotun",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "homedir": "^0.6.0",
+    "json2xls": "^0.1.1",
+    "jsonfile": "^2.2.3",
+    "lodash": "^4.0.1",
+    "mssql": "^3.0.0",
+    "path": "^0.12.7"
+  }
+}

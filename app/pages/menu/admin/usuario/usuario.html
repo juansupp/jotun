@@ -1,0 +1,22 @@
+<div layout='column'>
+  <md-content layout="row" layout-align="space-between center" layout-padding>
+    <div layout='column' flex>
+      <h3 class="md-subhead">Administración de usuarios</h3>
+      <p class="md-subheader">Acá podrás modificar y visualizar los usuarios ya existentes como también podrás agregar uno nuevo</p>
+    </div>
+    <div class="p++">
+      <div layout="row">
+        <div flex>
+          <md-button class="md-icon-button md-primary" aria-label="More" ng-click="insertar($event)">
+            <i class="material-icons">add</i>
+          </md-button >
+        </div>
+        <div flex></div>
+      </div>
+    </div>
+  </md-content>
+  <!-- -->
+  <div flex>
+    <table datatable="" dt-options="dtOU" dt-columns="dtCU" dt-instance="dtIU" class="row-border hover responsive" width="100%"></table>
+  </div>
+</div>

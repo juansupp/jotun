@@ -1,0 +1,51 @@
+<md-card>
+  <md-card-content layout='column'>
+    <md-content layout="row" layout-align="space-between center" layout-padding>
+      <div layout='column' flex>
+        <h3 class="md-subhead">Historial</h3>
+        <p class="md-subheader">En el historial de en entradas y salidas podrás ver más detalladamente los datos de cada persona que ingresó.
+          Por defecto se muestras los ultimos 150 registros si deseas ver todos los registros debes
+          <b ng-click='modoCarga($event)' class="cursor"> activar el modo carga </b> 
+        </p>
+      </div>
+      <div class="p++">
+        <div layout="row">
+          <div flex>
+            <md-button class="md-icon-button md-primary" aria-label="More" ng-click="modoCarga($event)">
+              <i class="material-icons">settings_input_hdmi</i>
+              <md-tooltip md-direction="bottom">
+                Activar modo carga
+              </md-tooltip>
+            </md-button>
+          </div>
+          <div flex></div>
+        </div>
+      </div>
+      <div layout='row'>
+        <div flex >
+          <md-datepicker ng-model="fechaIni" md-placeholder="Fecha inicial"></md-datepicker>
+        </div>
+
+        <div flex >
+          <md-datepicker ng-model="fechaFin" md-placeholder="Fecha final"></md-datepicker>
+        </div>
+        
+      </div>
+    </md-content>
+    <!-- -->
+    <div flex>
+      <table datatable="" dt-options="dtOH" dt-columns="dtCH" dt-instance="dtIH" class="row-border hover responsive" width="100%">
+        <thead> </thead>
+        <tfoot>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tfoot>
+      </table>
+    </div>
+  </md-card-content>
+</md-card>

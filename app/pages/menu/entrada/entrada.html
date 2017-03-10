@@ -1,0 +1,194 @@
+<md-card>
+    <md-card-content>
+        <form name='vm.ef' ng-submit="vm.ingreso()">
+            <div layout='row'>
+              <div layout='column' flex>
+                <!-- -->
+                <md-input-container class="" layout='row'>
+                  <md-checkbox ng-model="vm.cbParcial" aria-label="Checkbox 1">
+                    ¿Acompañante?
+                    <md-tooltip md-direction="down">
+                      Si registras una entrada como acompañante no será necesario capturar la foto soo basta con el numero de tarjeta
+                    </md-tooltip>
+                  </md-checkbox>
+                </md-input-container>
+                <!-- CEDULA -->
+                <md-autocomplete
+                  flex
+                  required='true'
+                  md-input-name="cedula"
+                  md-search-text="personaSearch"
+                  md-items="item in vm.querySearch(personaSearch,'persona','nombre,cedula,id_persona','cedula',4)"
+                  md-selected-item='item'
+                  md-item-text="item.cedula"
+                  md-selected-item-change="vm.autoPersona(item)"
+                  md-search-text-change="vm.resetAutoPersona()"
+                  md-floating-label="Cedula" >
+                  <md-item-template>
+                    <span md-highlight-text="personaSearch">{{item.nombre}}:{{item.cedula}}</span>
+                  </md-item-template>
+                  <div ng-messages="ef.cedula.$error" ng-if='ef.cedula.$touched'>
+                    <div ng-message="required">Debes seleccionar o registrar un numero de tarjeta.</div>
+                  </div>
+                </md-autocomplete>
+                <!-- Nombres y apellidos  -->
+                <md-input-container class="" flex>
+                  <label>Nombres y apellidos</label>
+                  <input type='text' required name="nombre" ng-model="vm.entrada.nombre">
+                  <div ng-messages="ef.nombre.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                  </div>
+                </md-input-container>
+                <!-- PERSONA A VISITAR  -->
+                <md-input-container class="" flex>
+                  <label>Persona a visitar</label>
+                  <input type='text' required name="pv" ng-model="vm.entrada.pv" ng-disabled="vm.cbParcial">
+                  <div ng-messages="ef.pv.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                  </div>
+                </md-input-container>
+
+                <div layout='row'>
+                  <!-- TARJETA ASIGNADA -->
+                  <md-autocomplete
+                    flex
+                    required='true'
+                    md-input-name="tarjeta"
+                    md-search-text="ntaSearch"
+                    md-items="item in vm.querySearch(ntaSearch,'nta','*','nTarjeta')" md-item-text="item.nTarjeta"
+                    md-floating-label="Numero de tarjeta">
+                    <md-item-template>
+                      <span md-highlight-text="ntaSearch">{{item.nTarjeta}}</span>
+                    </md-item-template>
+                    <div ng-messages="ef.tarjeta.$error" ng-if="ef.tarjeta.$touched">
+                      <div ng-message="required">Debes seleccionar o registrar un numero de tarjeta.</div>
+                    </div>
+                  </md-autocomplete>
+                  <!-- AREA -->
+                  <md-autocomplete
+                    required
+                    flex
+                    ng-disabled="cbParcial"
+                    md-input-name="area"
+                    md-search-text="areaSearch"
+                    md-items="item in vm.querySearch(areaSearch,'area','*','nombre',2)"
+                    md-item-text="item.nombre"
+                    md-floating-label="Area">
+                    <md-item-template>
+                      <span md-highlight-text="areaSearch">{{item.nombre}}</span>
+                    </md-item-template>
+                    <div ng-messages="ef.area.$error" ng-if="ef.area.$touched">
+                      <div ng-message="required">Debes seleccionar o registrar un area.</div>
+                    </div>
+                  </md-autocomplete>
+                </div>
+
+              </div>
+              <!-- FIXME: AGRAGAR IMAGEN CAMARA  -->
+              <div layout='column' flex>
+                <md-card>
+                  <video id="video" flex autoplay ng-hide='vm.bSnap'></video>
+                  <canvas id="canvas" width="400" height="400" ng-show='vm.bSnap'></canvas>
+                  <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button md-primary" aria-label="powa" ng-click="vm.powerCam()" ng-disabled='vm.pc' ng-disabled='h.lg(vm.elegido)'>
+                      <i class="material-icons">power_settings_new</i>
+                    </md-button>
+                    <!-- -->
+                    <md-button class="md-icon-button md-primary" aria-label="Settings" ng-disabled='!vm.pc' ng-click="vm.snap()" ng-disabled='h.lg(vm.elegido)'>
+                      <i class="material-icons">camera_alt</i>
+                    </md-button>
+                  </md-card-actions>
+                </md-card>
+              </div>
+            </div>
+            <!-- MV -->
+            <div layout='row'>
+              <div flex>
+                <md-input-container class="md-block">
+                  <label>Motivo de la visita</label>
+                  <textarea name="mv" ng-model="vm.entrada.mv" ng-disabled="cbParcial"></textarea>
+                </md-input-container>
+              </div>
+            </div>
+            <!-- OB -->
+            <div layout='row'>
+              <div flex>
+                <md-input-container class="md-block">
+                  <label>Observaciones</label>
+                  <textarea name="ob" ng-model="vm.entrada.ob" /></textarea>
+                </md-input-container>
+              </div>
+            </div>
+            <div layout='row' layout-wrap>
+              <!-- Vehiculo-->
+              <div layout='column' flex>
+                <md-checkbox ng-model="vm.listVehiculo" aria-label="Checkbox v" ng-change="vm.eventoCheck('vehiculo')" ng-disabled="vm.cbParcial">
+                  ¿Ingresa con vehiculo?
+                </md-checkbox>
+                <!-- LISTA -->
+                <div flex ng-if='vm.listVehiculo'>
+                  <md-autocomplete
+                  flex
+                  required='true'
+                  class='little'
+                  md-input-name="parqueadero"
+                  md-search-text="parqueaderoSearch"
+                  md-items="item in vm.querySearch(parqueaderoSearch,'parqueadero','*','id_parq')"
+                  md-selected-item='item'
+                  md-item-text="item.id_parq"
+                  md-floating-label="Parqueadero">
+                    <md-item-template>
+                      <span md-highlight-text="parqueaderoSearch">{{item.id_parq}}</span>
+                    </md-item-template>
+                    <div ng-messages="ef.cedula.$error" ng-if='ef.parqueadero.$touched'>
+                      <div ng-message="required">Debes seleccionar o registrar un parqueadero.</div>
+                    </div>
+                  </md-autocomplete>
+
+                  <md-list>
+                    <md-subheader class="md-no-sticky l">
+                      Selecciona un vehiculo registrado anteriormente o
+                      <b class="link" ng-click="vm.show($event,'V')">Registra uno nuevo.</b>
+                    </md-subheader>
+                    <md-list-item ng-repeat="item in vm.listV">
+                      <p>{{item.placa}} | {{item.marca}} | {{item.color}}
+                      </p>
+                      <md-checkbox class="md-secondary" ng-model='vm.chV[$index]' aria-label='vm.chV[$index].marca' ng-click="vm.selectVehiculo(item.id_vehiculo,$index)"></md-checkbox>
+                    </md-list-item>
+                  </md-list>
+                </div>
+              </div>
+              <!-- Activo -->
+              <div layout='column' flex>
+                <md-checkbox ng-model="vm.listDispositivo" aria-label="Checkbox d" ng-change="vm.eventoCheck('dispositivo')" ng-disabled="vm.cbParcial">
+                  ¿Ingresa dispositivos?
+                </md-checkbox>
+                <!-- LISTA -->
+                <div flex ng-if='vm.listDispositivo'>
+                  <md-list>
+                    <md-subheader class="md-no-sticky l">
+                      Selecciona un dispositivo registrado anteriormente o
+                      <b class="link" ng-click="vm.show($event,'D')">Registra uno nuevo.</b>
+                    </md-subheader>
+                    <md-list-item ng-repeat="item in vm.listD">
+                      <p>{{item.tipo}} | {{item.serial}} | {{item.id_activo}}
+                      </p>
+                      <md-checkbox class="md-secondary" ng-model='vm.chD[$index]' aria-label='vm.chD[$index]' ng-click="vm.selectDispositivo(item.id_activo,$index)"></md-checkbox>
+                    </md-list-item>
+                  </md-list>
+                </div>
+              </div>
+            </div>
+            <!-- Registrar boton entrada -->
+            <div layout='row'>
+              <br>
+              <br>
+              <br>
+              <md-button class="md-primary" type='submit' ng-disabled='vm.disableBtn'>
+                Registrar entrada.
+              </md-button>
+            </div>
+          </form>
+
+    </md-card-content>
+</md-card>

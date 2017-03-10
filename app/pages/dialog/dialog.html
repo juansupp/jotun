@@ -1,0 +1,196 @@
+<md-dialog aria-label="Mango (Fruit)" style='width: 30%;'>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{titulo}}</h2>
+      <span flex></span>
+      <md-button class="md-icon-button md-white" ng-click="cancel()">
+        <i class="material-icons">close</i>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <!-- -->
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <!-- Vehiculo INSERTAR ACTUALIZAR-->
+      <form name='dfv' ng-if='v==1' ng-submit="newVehiculo()">
+        <md-input-container class="md-block">
+          <label>Placa</label>
+          <input required name="placa" ng-model="vehiculo.placa">
+          <div ng-messages="dfv.placa.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <md-input-container class="md-block">
+          <label>Color</label>
+          <input required name="color" ng-model="vehiculo.color">
+          <div ng-messages="dfv.color.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <md-input-container class="md-block">
+          <label>Marca</label>
+          <input required name="marca" ng-model="vehiculo.marca">
+          <div ng-messages="dfv.marca.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <md-dialog-actions layout="row">
+          <md-button class="md-primary" type='submit' ng-click=''>{{btn}}</md-button>
+        </md-dialog-actions>
+      </form>
+      <!-- USUARIO --------------->
+      <form name='dfu' ng-if='v==5 || v==6 ' ng-submit="usuarioF()">
+        <!--//insertar y actualizar-->
+        <md-input-container class="md-block">
+          <label>Nombre</label>
+          <input required name="Nombre" ng-model="usuario.nombre">
+          <div ng-messages="dfu.Nombre.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <!-- -->
+        <md-input-container class="md-block">
+          <label>Nick</label>
+          <input required name="Nick" ng-model="usuario.nick">
+          <div ng-messages="dfu.Nick.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <!-- -->
+        <!--lista  rol -->
+        <label>Rol</label>
+        <md-select ng-model="usuario.rol">
+          <md-option value="1">
+            Administrador
+          </md-option>
+          <md-option value="0">
+            Portería
+          </md-option>
+        </md-select>
+        </md-input-container>
+        <!---->
+        <!--Contraseña-->
+        <md-checkbox ng-model="chcontra" aria-label="Cambiar  contraseña" ng-hide="v==5">
+          Cambiar contraseña
+        </md-checkbox>
+        <div ng-if="chcontra || v===5">
+          <md-input-container class="md-block">
+            <label>{{pass1}}</label>
+            <input required name="Contrasema" type='password' ng-model="usuario.contrasema">
+            <div ng-messages="dfu.contrasema.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Por favor digite de nuevo la nueva contraseña</label>
+            <input required name="Contrasema1" type='password' ng-model="usuario.contrasema1">
+            <div ng-messages="dfu.contrasema1.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <!---->
+        <md-dialog-actions layout="row">
+          <md-button class="md-primary" aria-label='kljhkjuh' type='submit'>{{btn}}</md-button>
+        </md-dialog-actions>
+      </form>
+
+      <!-- 7 = INFORMACIÓN DE TARJETA  -->
+      <section ng-if='v == 7' >
+        <div >
+          <h3 class="md-subhead lm">Visitante</h3>
+          <p class="md-subheader"> {{info.nombre}}</p>
+          <br>
+
+          <h3 class="md-subhead lm">Tiempo transcurrido</h3>
+          <p class="md-subheader"> {{info.restante }}</p>
+        </div>
+      </section>
+      <!-- Dispositivo-->
+      <form name='dfd' ng-if='v==2 || v ==4' ng-submit="Activo()">
+        <md-input-container class="md-block">
+          <label>Dispositivo</label>
+          <input required name="tipo" ng-model="activo.tipo">
+          <div ng-messages="dfd.tipo.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <md-input-container class="md-block">
+          <label>Serial</label>
+          <input required name="serial" ng-model="activo.serial">
+          <div ng-messages="dfd.serial.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <md-input-container class="md-block">
+          <label>Marca</label>
+          <input required name="marcav" ng-model="activo.marca">
+          <div ng-messages="dfd.marcav.$error">
+            <div ng-message="required">Campo requerido.</div>
+          </div>
+        </md-input-container>
+        <!-- -->
+        <md-button class="md-primary" type='submit'>{{btn}}</md-button>
+      </form>
+      <!--Detalle  vehículo-->
+      <section ng-if="v ===9" >
+        <h3 class="md-subhead lm">Placa</h3>
+        <p class="md-subheader"> {{jt.placa}}</p>
+        <br>
+
+        <h3 class="md-subhead lm">Color</h3>
+        <p class="md-subheader"> {{jt.color}}</p>
+        <br>
+
+        <h3 class="md-subhead lm">Marca</h3>
+        <p class="md-subheader"> {{jt.marca}}</p>
+        <br>
+      </section>
+      <!--Detalle  dispositivo-->
+      <section ng-if=" v === 10">
+
+        <h3 class="md-subhead lm">Serial</h3>
+        <p class="md-subheader"> {{jt.serial}}</p>
+        <br>
+
+        <h3 class="md-subhead lm">Marca</h3>
+        <p class="md-subheader"> {{jt.marca}}</p>
+        <br>
+
+        <h3 class="md-subhead lm">Dispositivo</h3>
+        <p class="md-subheader"> {{jt.tipo}}</p>
+        <br>
+
+      </section>
+      <!--Detalle  ingreso-->
+      <section ng-if=" v===11">
+
+        <h3 class="md-subhead lm">Motivo de la visita</h3>
+        <p class="md-subheader"> {{jt.mv}}</p>
+        <br>
+
+        <h3 class="md-subhead lm">Persona a visitar</h3>
+        <p class="md-subheader"> {{jt.pv}}</p>
+        <br>
+
+        <h3 class="md-subhead lm">Observaciones de entrada</h3>
+        <p class="md-subheader"> {{jt.observacion}}</p>
+        <br>
+
+        <h3 class="md-subhead lm">Observaciones de salida</h3>
+        <p class="md-subheader"> {{jt.observacion_s}}</p>
+        <br>
+
+
+      </section>
+      <!-- General -->
+    </div>
+  </md-dialog-content>
+</md-dialog>
